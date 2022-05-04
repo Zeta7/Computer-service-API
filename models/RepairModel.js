@@ -1,5 +1,5 @@
-const { dataBase } = require('../utils/DataBase');
 const { DataTypes } = require('sequelize');
+const { dataBase } = require('../utils/DataBase');
 
 const Repair = dataBase.define('repair', {
     id: {
@@ -9,6 +9,14 @@ const Repair = dataBase.define('repair', {
         type: DataTypes.INTEGER,
     },
     date: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    computerNumber: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    comments: {
         type: DataTypes.STRING,
         allowNull: false,
     },

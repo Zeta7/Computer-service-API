@@ -1,7 +1,6 @@
 const { User } = require('../models/UserModel');
 
 const userExists = async (request, response, next) => {
-    console.log('corre middlewares');
     try {
         const { id } = request.params;
 

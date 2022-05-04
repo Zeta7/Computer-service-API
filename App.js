@@ -1,7 +1,11 @@
 const express = require('express');
 const { usersRoutes } = require('./routes/UsersRoutes');
 const { repairsRoutes } = require('./routes/RepairsRoutes');
+const cors = require('cors');
+
 const App = express();
+
+App.use(cors());
 
 App.use(express.json());
 

@@ -3,7 +3,7 @@ const { dataBase } = require('../utils/DataBase');
 
 const User = dataBase.define('user', {
     id: {
-        primaryKey: true.valueOf,
+        primaryKey: true,
         autoIncrement: true,
         allowNull: false,
         type: DataTypes.INTEGER,

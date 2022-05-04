@@ -1,6 +1,9 @@
 const express = require('express');
-const router = express.Router();
 const { repairExists } = require('../middlewares/RepairMiddlewares');
+const {
+    createRepairValidations,
+    checkValidations,
+} = require('../middlewares/ValidationsMiddlewares');
 
 const {
     getAllRepair,
@@ -9,11 +12,12 @@ const {
     updateRepair,
     deleteRepair,
 } = require('../controllers/RepairsController');
+const { Router } = require('express');
 
-router
-    .route('/')
-    .get(getAllRepair)
-    .post(createRepair);
+const router = express.Router();
+
+router.route('/').get(getAllRepair);
+router.post('/', createRepairValidations, checkValidations, createRepair);
 
 router
     .route('/:id')
