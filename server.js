@@ -11,7 +11,7 @@ dataBase
     .catch((error) => console.log(error));
 
 // User.hasMany(Post, { foreignKey: 'userId' });
-User.hasMany(Repair, { foreignKey: 'userId' });
+User.hasMany(Repair);
 Repair.belongsTo(User);
 
 dataBase

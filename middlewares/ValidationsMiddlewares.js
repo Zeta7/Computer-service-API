@@ -13,6 +13,7 @@ const createUserValidations = [
         .isLength({ min: 8 })
         .withMessage('Password must be at least 8 characters long'),
 ];
+
 const createRepairValidations = [
     body('date').notEmpty().withMessage('The date cannot be empty'),
     body('computerNumber')
@@ -21,8 +22,8 @@ const createRepairValidations = [
     body('comments').notEmpty().withMessage('comment cannot be empty'),
 ];
 
-const checkValidations = (req, res, next) => {
-    const errors = validationResult(req);
+const checkValidations = (request, response, next) => {
+    const errors = validationResult(request);
 
     if (!errors.isEmpty()) {
         const messages = errors.array().map(({ msg }) => msg);
@@ -30,7 +31,7 @@ const checkValidations = (req, res, next) => {
         // [msg, msg, msg] -> 'msg. msg. msg'
         const errorMsg = messages.join('. ');
 
-        return res.status(400).json({
+        return response.status(400).json({
             status: 'error',
             message: errorMsg,
         });
