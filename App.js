@@ -5,6 +5,7 @@ const { globalErrorHandler } = require('./controllers/errorController');
 const helmet = require('helmet');
 const compression = require('compression');
 const morgan = require('morgan');
+const rateLimit = require('express-rate-limit');
 
 const cors = require('cors');
 const App = express();
@@ -12,6 +13,14 @@ const App = express();
 App.use(cors());
 
 App.use(express.json());
+
+const limiter = rateLimit({
+    max: 10000,
+    windowMs: 60 * 60 * 1000,
+    message: 'Toomany request from this ip',
+});
+
+App.use(limiter);
 
 App.use(helmet());
 
